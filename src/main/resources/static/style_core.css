@@ -1,0 +1,200 @@
+/* style_core.css */
+
+/* VARIÁVEIS CSS (Para fácil manutenção) */
+:root {
+    --color-primary: #4CAF50; /* Verde Principal (Terra Verde) */
+    --color-primary-dark: #388E3C; /* Verde Escuro */
+    --color-primary-light: #81C784; /* Verde Claro */
+    --color-background: #f8f8f8;
+    --color-text: #333;
+    --color-shadow: rgba(0, 0, 0, 0.1);
+    --color-success: #4CAF50;
+    --color-danger: #D32F2F;
+    --color-warning: #FFC107; /* Amarelo para edição */
+    --color-secondary: #6c757d; /* Cinza para botões secundários */
+    --font-size-base: 15px;
+    --padding-base-y: 8px;
+    --padding-base-x: 15px;
+}
+
+/* ESTILOS BÁSICOS & RESET */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: var(--color-primary-dark);
+    font-weight: 600;
+}
+
+/* CONTAINER GERAL DAS PÁGINAS LOGADAS */
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 12px var(--color-shadow);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+/* CABEÇALHO (Em todas as páginas, exceto login/register) */
+header {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 15px 30px;
+    margin: -30px -30px 30px -30px; 
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+header .logo h1 {
+    color: white;
+    margin: 0;
+    font-size: 24px;
+}
+
+header .logo p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+header .actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* ------------------------------------------- */
+/* ESTILO PADRÃO DOS BOTÕES (Páginas Logadas) */
+/* ------------------------------------------- */
+.btn {
+    padding: var(--padding-base-y) var(--padding-base-x);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+    font-size: var(--font-size-base);
+    white-space: nowrap;
+}
+
+.btn i {
+    margin-right: 6px;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px var(--color-shadow);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Classes de Cores */
+.btn-primary {
+    background-color: var(--color-primary-dark);
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #2e7d32;
+}
+
+.btn-success {
+    background-color: var(--color-success);
+    color: white;
+}
+.btn-success:hover {
+    background-color: #388E3C;
+}
+
+.btn-danger {
+    background-color: var(--color-danger);
+    color: white;
+}
+.btn-danger:hover {
+    background-color: #a32222;
+}
+
+.btn-warning {
+    background-color: var(--color-warning);
+    color: #212529;
+}
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
+    color: white;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* TÍTULOS E SEÇÕES */
+h2 {
+    color: var(--color-primary-dark);
+    border-bottom: 2px solid var(--color-primary-light);
+    padding-bottom: 10px;
+    margin-top: 25px;
+}
+
+/* MENSAGENS DE NOTIFICAÇÃO */
+.message-box {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    display: none; 
+    opacity: 0.95;
+    transition: opacity 0.3s;
+}
+
+.message-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+
+/* LAYOUT RESPONSIVO COMUM */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px 10px;
+        padding: 20px;
+    }
+    
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 15px;
+        margin: -20px -10px 20px -10px;
+    }
+
+    header .actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}

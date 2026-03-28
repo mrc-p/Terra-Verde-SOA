@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           xmlns:tns="http://terraverde.com.br/soap"
+           targetNamespace="http://terraverde.com.br/soap" 
+           elementFormDefault="qualified">
+
+    <!-- ================================================================== -->
+    <!-- ELEMENTO DE SEGURANÇA                                               -->
+    <!-- ================================================================== -->
+    <xs:element name="token" type="xs:string"/>
+
+    <!-- ================================================================== -->
+    <!-- TIPOS COMPLEXOS REUTILIZÁVEIS                                       -->
+    <!-- ================================================================== -->
+
+    <xs:complexType name="parceiroData">
+        <xs:sequence>
+            <xs:element name="id"                type="xs:long"/>
+            <xs:element name="nomeOuRazaoSocial" type="xs:string"/>
+            <xs:element name="documento"         type="xs:string"/>
+            <xs:element name="tipo"              type="xs:string"/>
+            <xs:element name="email"             type="xs:string"/>
+            <xs:element name="telefone"          type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="produtoData">
+        <xs:sequence>
+            <xs:element name="id"            type="xs:long"/>
+            <xs:element name="nome"          type="xs:string"/>
+            <xs:element name="descricao"     type="xs:string" minOccurs="0"/>
+            <xs:element name="preco"         type="xs:decimal"/>
+            <xs:element name="unidadeMedida" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="enderecoData">
+        <xs:sequence>
+            <xs:element name="id"          type="xs:long"/>
+            <xs:element name="parceiroId"  type="xs:long"/>
+            <xs:element name="logradouro"  type="xs:string"/>
+            <xs:element name="numero"      type="xs:string"/>
+            <xs:element name="complemento" type="xs:string" minOccurs="0"/>
+            <xs:element name="bairro"      type="xs:string"/>
+            <xs:element name="cidade"      type="xs:string"/>
+            <xs:element name="estado"      type="xs:string"/>
+            <xs:element name="cep"         type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ================================================================== -->
+    <!-- SERVIÇO 1 — AUTENTICAÇÃO                                            -->
+    <!-- ================================================================== -->
+
+    <xs:element name="cadastrarUsuarioRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="username" type="xs:string"/>
+                <xs:element name="password" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cadastrarUsuarioResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sucesso"  type="xs:boolean"/>
+                <xs:element name="mensagem" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="loginRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="username" type="xs:string"/>
+                <xs:element name="password" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="loginResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sucesso"  type="xs:boolean"/>
+                <xs:element name="mensagem" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ================================================================== -->
+    <!-- SERVIÇO 2 — PARCEIROS                                               -->
+    <!-- ================================================================== -->
+
+    <xs:element name="cadastrarParceiroRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nomeOuRazaoSocial" type="xs:string"/>
+                <xs:element name="documento"         type="xs:string"/>
+                <xs:element name="tipo"              type="xs:string"/>
+                <xs:element name="email"             type="xs:string"/>
+                <xs:element name="telefone"          type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cadastrarParceiroResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id"       type="xs:long"/>
+                <xs:element name="mensagem" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="listarParceirosRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="tipo" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="listarParceirosResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="parceiros" type="tns:parceiroData" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="atualizarParceiroRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id"                type="xs:long"/>
+                <xs:element name="nomeOuRazaoSocial" type="xs:string"/>
+                <xs:element name="documento"         type="xs:string"/>
+                <xs:element name="tipo"              type="xs:string"/>
+                <xs:element name="email"             type="xs:string"/>
+                <xs:element name="telefone"          type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="atualizarParceiroResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sucesso"  type="xs:boolean"/>
+                <xs:element name="mensagem" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deletarParceiroRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deletarParceiroResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sucesso"  type="xs:boolean"/>
+                <xs:element name="mensagem" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ================================================================== -->
+    <!-- SERVIÇO 3 — RELATÓRIO                                               -->
+    <!-- ================================================================== -->
+
+    <xs:element name="gerarRelatorioPdfRequest">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="gerarRelatorioPdfResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pdfBase64"   type="xs:string"/>
+                <xs:element name="nomeArquivo" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ================================================================== -->
+    <!-- SERVIÇO 4 — PRODUTOS                                                -->
+    <!-- ================================================================== -->
+
+    <xs:element name="cadastrarProdutoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nome"          type="xs:string"/>
+                <xs:element name="descricao"     type="xs:string" minOccurs="0"/>
+                <xs:element name="preco"         type="xs:decimal"/>
+                <xs:element name="unidadeMedida" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cadastrarProdutoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id"       type="xs:long"/>
+                <xs:element name="mensagem" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="listarProdutosRequest">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="listarProdutosResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="produtos" type="tns:produtoData" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="atualizarProdutoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id"            type="xs:long"/>
+                <xs:element name="nome"          type="xs:string"/>
+                <xs:element name="descricao"     type="xs:string" minOccurs="0"/>
+                <xs:element name="preco"         type="xs:decimal"/>
+                <xs:element name="unidadeMedida" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="atualizarProdutoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sucesso"  type="xs:boolean"/>
+                <xs:element name="mensagem" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deletarProdutoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="deletarProdutoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sucesso"  type="xs:boolean"/>
+                <xs:element name="mensagem" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- ================================================================== -->
+    <!-- SERVIÇO 5 — ENDEREÇOS DE PARCEIROS                                  -->
+    <!-- ================================================================== -->
+
+    <xs:element name="cadastrarEnderecoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="parceiroId"  type="xs:long"/>
+                <xs:element name="logradouro"  type="xs:string"/>
+                <xs:element name="numero"      type="xs:string"/>
+                <xs:element name="complemento" type="xs:string" minOccurs="0"/>
+                <xs:element name="bairro"      type="xs:string"/>
+                <xs:element name="cidade"      type="xs:string"/>
+                <xs:element name="estado"      type="xs:string"/>
+                <xs:element name="cep"         type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cadastrarEnderecoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id"       type="xs:long"/>
+                <xs:element name="mensagem" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="listarEnderecosRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="parceiroId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="listarEnderecosResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="enderecos" type="tns:enderecoData" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="atualizarEnderecoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id"          type="xs:long"/>
+                <xs:element name="logradouro"  type="xs:string"/>
+                <xs:element name="numero"      type="xs:string"/>
+                <xs:element name="complemento" type="xs:string" minOccurs="0"/>
+                <xs:element name="bairro"      type="xs:string"/>
+                <xs:element name="cidade"      type="xs:string"/>
+                <xs:element name="estado"      type="xs:string"/>
+                <xs:element name="cep"         type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="atualizarEnderecoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sucesso"  type="xs:boolean"/>
+                <xs:element name="mensagem" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="removerEnderecoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="removerEnderecoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sucesso"  type="xs:boolean"/>
+                <xs:element name="mensagem" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | Terra Verde</title>
+    <link rel="stylesheet" href="style_login_register.css">
+    <link rel="stylesheet" href="style_core.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="auth-container">
+        <h1>Terra Verde - Novo Usuário</h1>
+        <div id="message-box" class="message-box"></div>
+        <form id="register-form">
+            <div class="form-group">
+                <label for="username">Usuário (Mín. 4 caracteres e Máx. 12):</label>
+                <input type="text" id="username" name="username" required
+                placeholder="Digite um usuário" 
+                minlength="4"
+                maxlength="12">
+            </div>
+            <div class="form-group">
+                <label for="password">Senha (Mín. 6 caracteres e Máx. 12):</label>
+                <input type="password" id="password" name="password" required
+                placeholder="Digite uma senha" 
+                minlength="6" 
+                maxlength="12">
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirmar Senha:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required
+                placeholder="Confirme a senha"
+                minlength="6"
+                maxlength="12">
+                
+            </div>
+            
+            <button type="submit" class="btn btn-success" style="width: 100%; margin-top: 15px;"><i class="fas fa-user-plus"></i> Registrar</button>
+        </form>
+        
+        <a href="login.html" class="register-link">Se já está cadastrado, entre aqui</a>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

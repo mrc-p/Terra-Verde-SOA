@@ -1,0 +1,122 @@
+/* style_lista.css */
+
+/* IMPORTA OS ESTILOS CORE */
+@import url('style_core.css');
+
+/* ------------------------------------------- */
+/* TABELA DE DADOS (lista_cliente/lista_fornecedor) */
+/* ------------------------------------------- */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.data-table th, .data-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.data-table th {
+    background-color: var(--color-primary-light);
+    color: var(--color-text);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.data-table td {
+    font-size: 14px;
+}
+
+.data-table tr:hover {
+    background-color: #e6ffe6;
+}
+
+/* Botões de Ação na Tabela (Editar/Excluir) */
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 13px;
+}
+
+/* Garante que os botões Editar/Excluir fiquem lado a lado na última coluna */
+.data-table td:last-child {
+    display: flex; 
+    gap: 8px; 
+    align-items: center; 
+    white-space: nowrap;
+}
+
+/* ------------------------------------------- */
+/* MODAL (Confirmação de Exclusão) */
+/* ------------------------------------------- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(2px);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.3s;
+}
+
+.modal-content h3 {
+    color: var(--color-danger);
+    margin-top: 0;
+}
+
+.modal-content p {
+    margin: 20px 0 30px;
+    font-size: 16px;
+}
+
+.close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 0.8;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-actions .btn {
+    min-width: 120px;
+}
+
+/* KEYFRAMES */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

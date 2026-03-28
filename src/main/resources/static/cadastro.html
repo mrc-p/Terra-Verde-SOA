@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro | Terra Verde</title>
+    <link rel="stylesheet" href="style_core.css">
+    <link rel="stylesheet" href="style_cadastro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>Terra Verde</h1>
+                <p>Sistema de Gestão de Parceiros</p>
+            </div>
+            <div class="actions">
+                <a href="index.html" class="btn btn-secondary"><i class="fas fa-home"></i> Dashboard</a>
+                <button id="logout-btn" class="btn btn-secondary"><i class="fas fa-sign-out-alt"></i> Sair</button>
+            </div>
+        </header>
+
+        <h2 id="page-title">Cadastro de Parceiro</h2>
+        <div id="message-box" class="message-box"></div>
+
+        <div class="form-section">
+            <h3 id="form-title">Novo Cadastro</h3>
+            <form id="parceiro-form">
+                <input type="hidden" id="id" name="id" value="">
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="tipo">Tipo de Parceiro:</label>
+                        <select id="tipo" name="tipo" required>
+                            <option value="">Selecione o Tipo</option>
+                            <option value="CLIENTE">CLIENTE</option>
+                            <option value="FORNECEDOR">FORNECEDOR</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="nomeOuRazaoSocial">Nome:</label>
+                        <input type="text" id="nomeOuRazaoSocial" name="nomeOuRazaoSocial" placeholder="Nome do Cliente ou Fornecedor"
+                        required
+                        minlength="5"
+                        maxlength="45">
+                    </div>
+                    <div class="form-group">
+                        <label for="documento"><span id="doc-label">Documento (CPF/CNPJ):</span></label>
+                        <input type="text" id="documento" name="documento" placeholder="Digite o documento (CPF ou CNPJ)" required 
+                        pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2}|\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})"
+                        minlength="11"
+                        maxlength="18"
+                        title="Digite um CPF ou CNPJ válido">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="exemplo@email.com" required
+                        minlength="10"
+                        maxlength="45">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone:</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="Digite um telefone" required
+                        pattern="(\(?\d{2}\)?\s?\d{4,5}-?\d{4})"
+                        minlength="10"
+                        maxlength="15"
+                        title="Digite um número de telefone válido">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="observacoes">Observações:</label>
+                    <textarea id="observacoes" name="observacoes"
+                        minlength="3"
+                        maxlength="60" rows="3"></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="save-btn"><i class="fas fa-save"></i> Salvar Parceiro</button>
+                    <button type="button" class="btn btn-secondary" onclick="window.history.back()"><i class="fas fa-arrow-left"></i> Voltar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
