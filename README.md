@@ -121,15 +121,9 @@ O console do Eclipse exibirá as informações de inicialização. Procure pela 
 7.6.1 Primeiro Acesso e Credenciais
 
 
-Abra seu navegador e acesse a URL: http://localhost:8080/;
-
-
-O sistema irá redirecionar para a página de Login;
-
-
-Credenciais Iniciais para testar (Injetadas pelo SecurityConfig.java):
+Credenciais Iniciais para testar no Postman (Injetadas pelo SecurityConfig.java):
 Username: admin
-            Password: admin123
+Password: admin123
 
 
 Para confirmar que a aplicação está no ar, você pode acessar o endereço  do WSDL no navegador em “http://localhost:8080/ws/terraverdesoa.wsdl”.
