@@ -116,7 +116,7 @@ Clique na seta e selecione “TerraVerdeSoaApplication” para rodar a aplicaç�
 
 O console do Eclipse exibirá as informações de inicialização. Procure pela mensagem indicando que o servidor foi iniciado na porta 8080:
 >>> Usuário ADMIN inicial criado: admin/admin123
-... Started CadastroClienteFornecedorApplication in X.XXX seconds (process running for Y.YYY)
+... Started TerraVerdeSoaApplication  in X.XXX seconds (process running for Y.YYY)
 
 7.6.1 Primeiro Acesso e Credenciais
 
